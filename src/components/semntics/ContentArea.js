@@ -31,6 +31,9 @@ import VendorCategory from "../pages/VendorCategory";
 import MenuCategory from "../pages/MenuCategory";
 import MenuSubCategory from "../pages/MenuSubCategory";
 import Plans from "../pages/Plans";
+import Dishes from "../pages/Dishes";
+import Payments from "../pages/Payments";
+import TermsAndConditions from "../pages/TermsAndConditions";
 
 function ContentArea() {
   return (
@@ -44,7 +47,10 @@ function ContentArea() {
       <Route path="/v-category" element={<VendorCategory />} />
       <Route path="/menu-category" element={<MenuCategory />} />
       <Route path="/menu-sub-category" element={<MenuSubCategory />} />
-      <Route path="/Plans" element={<Plans />} />
+      <Route path="/dishes" element={<Dishes />} />
+      <Route path="/plans" element={<Plans />} />
+      <Route path="/terms" element={<TermsAndConditions />} />
+      <Route path="/payments" element={<Payments />} />
       <Route path="/judges/:id" element={<JudgeDetails />} />
       <Route path="/participants" element={<Participants />} />
       <Route path="/participants/:id" element={<ParticipantDetails />} />

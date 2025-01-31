@@ -413,41 +413,223 @@ export const MenuSubCategoryData = [
   }
 ];
 
-export const PlansTableData =[
+export const PlansTableData = [
   {
-    sl:1,
-    name:"Basic",
-    id:"BP-001",
-    image:"/constants/planIcon2.png",
-    actualPrice:999,
-    offerPrice:799,
-    description:"Manage up to 5 restaurants ,Basic analytics dashboard ,Daily revenue reports ,Email notifications ,10GB cloud storage for backups ,Email support",
-    validity:1,
-    validityType:"month",
-    status:true
+    sl: 1,
+    name: "Basic",
+    id: "BP-001",
+    image: "/constants/planIcon2.png",
+    actualPrice: 999,
+    offerPrice: 799,
+    description:
+      "Manage up to 5 restaurants ,Basic analytics dashboard ,Daily revenue reports ,Email notifications ,10GB cloud storage for backups ,Email support",
+    validity: 1,
+    validityType: "month",
+    status: true
   },
   {
-    sl:1,
-    name:"Pro",
-    id:"PP-002",
-    image:"/constants/planIcon.png",
-    actualPrice:2999,
-    offerPrice:2499,
-    description:"Manage up to 5 restaurants ,Basic analytics dashboard ,Daily revenue reports ,Email notifications ,10GB cloud storage for backups ,Email support",
-    validity:6,
-    validityType:"month",
-    status:false
+    sl: 1,
+    name: "Pro",
+    id: "PP-002",
+    image: "/constants/planIcon.png",
+    actualPrice: 2999,
+    offerPrice: 2499,
+    description:
+      "Manage up to 5 restaurants ,Basic analytics dashboard ,Daily revenue reports ,Email notifications ,10GB cloud storage for backups ,Email support",
+    validity: 6,
+    validityType: "month",
+    status: false
   },
   {
-    sl:1,
-    name:"Enterprise",
-    id:"EP-002",
-    image:"/constants/planIcon2.png",
-    actualPrice:7999,
-    offerPrice:6999,
-    description:"Manage up to 5 restaurants ,Basic analytics dashboard ,Daily revenue reports ,Email notifications ,10GB cloud storage for backups ,Email support",
-    validity:1,
-    validityType:"year",
-    status:true
+    sl: 1,
+    name: "Enterprise",
+    id: "EP-002",
+    image: "/constants/planIcon2.png",
+    actualPrice: 7999,
+    offerPrice: 6999,
+    description:
+      "Manage up to 5 restaurants ,Basic analytics dashboard ,Daily revenue reports ,Email notifications ,10GB cloud storage for backups ,Email support",
+    validity: 1,
+    validityType: "year",
+    status: true
+  }
+];
+
+export const DishesData = [
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
   },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "Non-veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+  {
+    sl: 1,
+    name: "Desserts",
+    Image: "/constants/dishes.png",
+    price: 200,
+    description:
+      "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
+    type: "veg",
+    rating: 5
+  },
+
+];
+
+export const PaymentTableData =[
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
+{
+  sl:1,
+  id:"PAY001",
+  vendor:"ABC Foods",
+  dateAndTime:"2024-11-28, 10:30 AM",
+  status:"completed",
+  plan:"Gold Plan"
+},
 ]
