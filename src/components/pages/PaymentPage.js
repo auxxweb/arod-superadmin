@@ -32,7 +32,7 @@ const PaymentPage = () => {
           {" "}
           <span className="flex items-center">
             <span
-              className="bg-[#0EB599] text-white rounded-full p-3 cursor-pointer"
+              className="bg-[#E88B13] text-white rounded-full p-3 cursor-pointer"
               onClick={toggleModal}
             >
               + Add Salary
@@ -431,7 +431,7 @@ const PaymentPage = () => {
           <span className="flex items-center">
             <span
               onClick={selectRole} // Call selectRole when the Search button is clicked
-              className="cursor-pointer bg-[#0EB599] text-white p-2 lg:w-[228px] rounded text-center"
+              className="cursor-pointer bg-[#E88B13] text-white p-2 lg:w-[228px] rounded text-center"
             >
               Search
             </span>

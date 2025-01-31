@@ -5,7 +5,7 @@ import judges from "../assets/images/judges.png";
 import zones from "../assets/images/zones.png";
 const DashBoardSection2 = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const { data,refetch} = useGetDashboardDetailQuery();
+  // const { data,refetch} = useGetDashboardDetailQuery();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -17,7 +17,7 @@ const DashBoardSection2 = () => {
   }, []);
   
   useEffect(() => {
-    refetch();
+    // refetch();
   }, []);
   // Format the time as HH:MM:SS AM/PM
   const formattedTime = currentTime.toLocaleTimeString("en-US", {
@@ -51,24 +51,24 @@ const DashBoardSection2 = () => {
   const dashboardData = [
     {
       logo: zones,
-      count: data?.data?.zones,
-      title: "Zones",
+      count: 250,
+      title: "Dishes",
     },
     {
       logo: judges,
-      count: data?.data?.judges,
-      title: "Judges",
+      count: 150,
+      title: "Menu",
     },
     {
       logo: participats,
-      count: data?.data?.participants,
-      title: "Participants",
+      count: 50,
+      title: "Vendors",
     },
   ];
 
   return (
     <>
-      <div className="flex flex-col space-y-4 ">
+      <div style={{margin:"0 20px"}} className="flex flex-col space-y-4 ">
         <div className="w-full px-2 py-5 text-left bg-white shadow-md border border-gray-300 gap-5 sm:gap-10  mr-4 flex items-center justify-center rounded-2xl">
           <div className="text-left">
             <div className="flex justify-center items-center text-xl text-gray-500 ">

@@ -34,6 +34,8 @@ import Plans from "../pages/Plans";
 import Dishes from "../pages/Dishes";
 import Payments from "../pages/Payments";
 import TermsAndConditions from "../pages/TermsAndConditions";
+import Reports from "../pages/Report";
+import VendorCard from "../pages/JudgeDetails";
 
 function ContentArea() {
   return (
@@ -44,6 +46,7 @@ function ContentArea() {
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/changePassword/:forgotId" element={<ChangePassword />} />
       <Route path="/zones" element={<Zones />} />
+      <Route path="/single-vendor" element={<VendorCard />} />
       <Route path="/v-category" element={<VendorCategory />} />
       <Route path="/menu-category" element={<MenuCategory />} />
       <Route path="/menu-sub-category" element={<MenuSubCategory />} />
@@ -51,6 +54,7 @@ function ContentArea() {
       <Route path="/plans" element={<Plans />} />
       <Route path="/terms" element={<TermsAndConditions />} />
       <Route path="/payments" element={<Payments />} />
+      <Route path="/report" element={<Reports />} />
       <Route path="/judges/:id" element={<JudgeDetails />} />
       <Route path="/participants" element={<Participants />} />
       <Route path="/participants/:id" element={<ParticipantDetails />} />

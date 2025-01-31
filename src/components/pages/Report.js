@@ -22,8 +22,9 @@ import { LuCopyCheck } from "react-icons/lu";
 import JudgeAvatar from "../../assets/images/person-placeholder.png";
 import { toast } from "sonner";
 import { PaymentTableData, PlansTableData } from "../../constants/tableData";
+import DashBoardSection2 from "../DashBoardSection2";
 
-const Payments = () => {
+const Reports = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState([]);
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
@@ -287,10 +288,12 @@ const Payments = () => {
   return (
     <>
       <div className="flex rounded-lg p-4 pb-0">
-        <h2 className="text-2xl font-semibold text-gray-700">Payments</h2>
+        <h2 className="text-2xl font-semibold text-gray-700">Report</h2>
        
       </div>
       <div>
+      <DashBoardSection2 />
+
         <div className="flex rounded-lg p-4 pr-0 pt-0">
           <div className="ml-auto lg:mr-4 flex items-center space-x-4 justify-end pt-3">
             {/* Parent div for span elements */}
@@ -401,5 +404,5 @@ const Payments = () => {
   );
 };
 
-export default Payments;
+export default Reports;
  

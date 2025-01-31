@@ -291,7 +291,7 @@ const Dishes = () => {
         <div className="ml-auto flex items-center space-x-4">
           <span className="flex items-center">
             <span
-              className="bg-[#0EB599] hover:bg-[#068A55] text-white rounded-3xl pt-2 pb-2 pl-4 pr-4 cursor-pointer"
+              className="bg-[#E88B13] hover:bg-[#E88B13] text-white rounded-3xl pt-2 pb-2 pl-4 pr-4 cursor-pointer"
               onClick={toggleModal}>
               Add Dishes
             </span>
@@ -343,7 +343,7 @@ const Dishes = () => {
                           {zonesList.map((zone) => (
                             <li
                               key={zone.value}
-                              className="bg-[#1DB290] flex items-center justify-between text-white rounded-full py-0.5 px-2 text-xs font-light"
+                              className="bg-[#E88B13] flex items-center justify-between text-white rounded-full py-0.5 px-2 text-xs font-light"
                             >
                               <span>{zone.label}</span>
                               <button
@@ -478,7 +478,7 @@ const Dishes = () => {
                   <button
                     disabled={isLoadingMutation || isLoadingEdit}
                     type="submit"
-                    className="bg-[#0EB599] hover:bg-[#068A55] text-white font-bold py-2 px-6 rounded-3xl">
+                    className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl">
                     {isLoadingMutation || isLoadingEdit
                       ? "loading..."
                       : "Submit"}
@@ -545,7 +545,7 @@ const Dishes = () => {
               />
             </span>
             <span className="flex items-center">
-              <span className="cursor-pointer bg-[#0EB599] hover:bg-[#068A55] text-white p-2 lg:w-[100px] text-center rounded-3xl">
+              <span className="cursor-pointer bg-[#E88B13] hover:bg-[#E88B13] text-white p-2 lg:w-[100px] text-center rounded-3xl">
                 Search
               </span>
             </span>
@@ -586,7 +586,7 @@ const Dishes = () => {
           ) : (
                     DishesData?.map((judge, index) => (
               <tr
-                className="odd:bg-teal-100 even:bg-grey border-[2px] border-opacity-50 border-[#9e9696]"
+                className="odd:bg-[#FCD199] even:bg-white border-[2px] border-opacity-50 border-[#9e9696]"
                 key={index}>
                 <td
                   onClick={() => navigate(`/judges/${judge?._id}`)}

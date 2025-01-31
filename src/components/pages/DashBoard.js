@@ -4,9 +4,9 @@ import DashBoard3Chart from "../DashBoard3Chart";
 
 const DashBoard = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-[#B1B1B1]">
         {/* <DashBoard1Top /> */}
-      <div className=" w-full">
+      <div style={{paddingTop:"24px"}} className=" w-full">
         <DashBoardSection2 />
       </div>
       <DashBoard3Chart />

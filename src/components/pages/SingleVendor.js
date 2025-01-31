@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa"; // Importing star icon from react-icons
+import { useHistory } from "react-router-dom"; // Importing useHistory for navigation (if using react-router)
 
 const vendor = {
   slNo: 10,
@@ -21,11 +22,21 @@ const vendor = {
 };
 
 const VendorCard = () => {
+  const history = useHistory(); // Hook to manage navigation
+
   // Create an array of stars based on the ranking (e.g., 5 stars)
   const stars = Array.from({ length: 5 }, (_, index) => index < vendor.ranking);
 
   return (
-    <div className="max-w-4xl mx-auto bg-white border rounded-lg shadow-lg overflow-hidden p-6 sm:max-w-3xl md:max-w-2xl lg:max-w-4xl">
+    <div className="max-w-4xl mx-auto bg-white border rounded-lg shadow-lg overflow-hidden p-6 sm:max-w-3xl md:max-w-2xl lg:max-w-4xl relative">
+      {/* Back Button Positioned to the Left of the Card */}
+      <button
+        onClick={() => history.goBack()} // Navigate back to the previous page
+        className="absolute top-4 left-[-50px] bg-blue-500 text-white py-2 px-4 rounded-full shadow-md hover:bg-blue-600"
+      >
+        Back
+      </button>
+
       <img
         src={vendor.image}
         alt={vendor.name}

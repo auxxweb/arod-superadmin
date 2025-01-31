@@ -15,8 +15,10 @@ import { PUBLIC_USER_FRONTEND_URL } from "../../common/utils";
 import { toast } from "sonner";
 import { vendorData } from "../../constants/tableData";
 import { BiSolidDownArrow } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Zones = () => {
+   const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editPopupData, setEditPopupData] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -183,7 +185,7 @@ const Zones = () => {
         <div className="ml-auto flex items-center space-x-4">
           <span className="flex items-center">
             <span
-              className="bg-[#0EB599] hover:bg-[#068A55] text-white rounded-3xl pt-2 pb-2 pl-4 pr-4 cursor-pointer"
+              className="bg-[#E88B13] hover:bg-[#E88B13] text-white rounded-3xl pt-2 pb-2 pl-4 pr-4 cursor-pointer"
               onClick={toggleModal}>
               Add Vendor
             </span>
@@ -229,7 +231,7 @@ const Zones = () => {
                   <button
                     disabled={isLoadingMutation || isLoadingEdit}
                     type="submit"
-                    className="bg-[#0EB599] hover:bg-[#068A55] text-white font-bold py-2 px-6 rounded-3xl">
+                    className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl">
                     {isLoadingMutation || isLoadingEdit
                       ? "loading..."
                       : "Submit"}
@@ -274,7 +276,7 @@ const Zones = () => {
           />
         </span>
         <span className="flex items-center ">
-          <span className="cursor-pointer bg-[#0EB599] hover:bg-[#068A55] text-white p-2 lg:w-[100px] text-center rounded-3xl">
+          <span className="cursor-pointer bg-[#E88B13] hover:bg-[#E88B13] text-white p-2 lg:w-[100px] text-center rounded-3xl">
             Search
           </span>
         </span>
@@ -305,54 +307,53 @@ const Zones = () => {
           ) : (
             vendorData?.map((zone, index) => (
               <tr
-                className="odd:bg-grey-100 even:bg-white border-[2px] border-opacity-50 border-[#9e9696]"
+              className="odd:bg-[#FCD199] even:bg-white border-2 border-opacity-50 border-[#9e9696]"
+
                 key={index}>
                 <td className="px-4 py-2 border-r border-gray-400">
                   {index + 1}
                 </td>
                 <td
-                  style={{ cursor: "pointer",textDecoration:"none" }}
+                 onClick={() => navigate(`/single-vendor`)}
+                  style={{ cursor: "pointer" }}
                   className="px-4 py-2 border-r border-gray-400">
                   <u
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer", textDecoration: "none" }}
                     onMouseOver={({ target }) => (target.style.color = "blue")}
                     onMouseOut={({ target }) => (target.style.color = "black")}>
-                   <div style={{display:"flex",gap:"1rem"}}>
-                    <img
-                      alt="pics"
-                      src={zone?.image}
-                      className="w-10 h-10 rounded-full mr-2"
-                    />
-                     {zone?.name}{" "}
-                     </div>
+                    <div style={{ display: "flex", gap: "1rem" }}>
+                      <img
+                        alt="pics"
+                        src={zone?.image}
+                        className="w-10 h-10 rounded-full mr-2"
+                      />
+                      {zone?.name}{" "}
+                    </div>
                   </u>
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
                   {zone?.id}
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                <div className="flex -space-x-3">{zone?.description}</div>
+                  <div className="flex -space-x-3">{zone?.description}</div>
                 </td>
-                  <td className="px-4 py-2 border-r border-gray-400">
-                                  <button
-                                   
-                                    className={`py-2 px-5 flex space-x-2 items-center ${
-                                      zone?.status
-                                        ? " text-[#FF0404] border-[#FF0404]"
-                                        : "  border-[#1DB290] text-[#1DB290]"
-                                    } rounded-full  border `}
-                                  >
-                                    {" "}
-                                    <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
-                                    <BiSolidDownArrow className="text-black" />
-                                  </button>
-                                </td>
+                <td className="px-4 py-2 border-r border-gray-400">
+                  <button
+                    className={`py-2 px-5 flex space-x-2 items-center ${
+                      zone?.status
+                        ? " text-[#FF0404] border-[#FF0404]"
+                        : "  border-[#E88B13] text-[#E88B13]"
+                    } rounded-full  border `}>
+                    {" "}
+                    <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
+                    <BiSolidDownArrow className="text-black" />
+                  </button>
+                </td>
 
-                                <td className="px-4 py-2 border-r border-gray-400">
+                <td className="px-4 py-2 border-r border-gray-400">
                   <button
                     // disabled={isLoadingBlock}
-                    onClick={() => handleEditClick(zone)}
-                  >
+                    onClick={() => handleEditClick(zone)}>
                     <img
                       alt="pics"
                       src="/icons/edit.svg"
