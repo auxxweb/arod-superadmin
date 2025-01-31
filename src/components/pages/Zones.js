@@ -18,7 +18,7 @@ import { BiSolidDownArrow } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 const Zones = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editPopupData, setEditPopupData] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -27,6 +27,9 @@ const Zones = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
   const isLoading = false;
+
+  const [coverImagePreview, setCoverImagePreview] = useState(null);
+  const [logoPreview, setLogoPreview] = useState(null);
   // const { data, isLoading, refetch } = useGetZonesQuery({
   //   limit,
   //   page: currentPage,
@@ -193,58 +196,251 @@ const Zones = () => {
             <Modal
               isVisible={isModalVisible}
               onClose={handleModalClose}
-              modalHeader={editPopupData ? "Edit Zone" : "Add Zone"}>
-              <form onSubmit={onSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="zoneName"
-                    className="block text-sm font-medium text-gray-700">
-                    Zone Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    required
-                    defaultValue={editPopupData ? editPopupData?.name : null}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="description"
-                    className="block text-sm font-medium text-gray-700">
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    className="mt-1 block w-full h-20 border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    required
-                    defaultValue={
-                      editPopupData ? editPopupData?.description : null
-                    }
-                  />
-                </div>
-                <div className="flex justify-center p-6">
-                  <button
-                    disabled={isLoadingMutation || isLoadingEdit}
-                    type="submit"
-                    className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl">
-                    {isLoadingMutation || isLoadingEdit
-                      ? "loading..."
-                      : "Submit"}
-                  </button>
-                </div>
-              </form>
+              modalHeader={editPopupData ? "Edit Vendor" : "Add Vendor"}>
+              <div className="modal-content-container">
+                <form onSubmit={onSubmit} className="space-y-6">
+                <div className="form-group">
+                    <label
+                      htmlFor="vendorName"
+                      className="block text-sm font-medium text-gray-700">
+                      Vendor Name
+                    </label>
+                    <input
+                      type="text"
+                      name="vendorName"
+                      id="vendorName"
+                      className="input-field"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.vendorName : null
+                      }
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="description"
+                      className="block text-sm font-medium text-gray-700">
+                      Description
+                    </label>
+                    <input
+                      type="text"
+                      name="description"
+                      id="description"
+                      className="input-field h-20"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.description : null
+                      }
+                    />
+                  </div>
+                 
+                  <div className="form-group">
+                    <label
+                      htmlFor="location"
+                      className="block text-sm font-medium text-gray-700">
+                      Location
+                    </label>
+                    <input
+                      type="text"
+                      name="location"
+                      id="location"
+                      className="input-field"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.location : null
+                      }
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="selectedPlan"
+                      className="block text-sm font-medium text-gray-700">
+                      Selected Plan
+                    </label>
+                    <select
+                      name="selectedPlan"
+                      id="selectedPlan"
+                      className="input-field"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.selectedPlan : ""
+                      }>
+                      <option value="basic">Basic</option>
+                      <option value="premium">Premium</option>
+                      <option value="enterprise">Enterprise</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="kitchenStatus"
+                      className="block text-sm font-medium text-gray-700">
+                      Kitchen Status
+                    </label>
+                    <select
+                      name="kitchenStatus"
+                      id="kitchenStatus"
+                      className="input-field"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.kitchenStatus : ""
+                      }>
+                      <option value="open">Open</option>
+                      <option value="closed">Closed</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="coverImage"
+                      className="block text-sm font-medium text-gray-700">
+                      Cover Image
+                    </label>
+                    <input
+                      type="file"
+                      name="coverImage"
+                      id="coverImage"
+                      accept="image/*"
+                      className="input-file"
+                      onChange={(e) =>
+                        setCoverImagePreview(
+                          URL.createObjectURL(e.target.files[0])
+                        )
+                      }
+                    />
+                    {coverImagePreview && (
+                      <div className="preview-container">
+                        <img
+                          src={coverImagePreview}
+                          alt="Cover Preview"
+                          className="preview-image"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="logo"
+                      className="block text-sm font-medium text-gray-700">
+                      Logo
+                    </label>
+                    <input
+                      type="file"
+                      name="logo"
+                      id="logo"
+                      accept="image/*"
+                      className="input-file"
+                      onChange={(e) =>
+                        setLogoPreview(URL.createObjectURL(e.target.files[0]))
+                      }
+                    />
+                    {logoPreview && (
+                      <div className="preview-container">
+                        <img
+                          src={logoPreview}
+                          alt="Logo Preview"
+                          className="preview-image"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="category"
+                      className="block text-sm font-medium text-gray-700">
+                      Category
+                    </label>
+                    <select
+                      name="category"
+                      id="category"
+                      className="input-field"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.category : ""
+                      }>
+                      <option value="restaurant">Restaurant</option>
+                      <option value="hotel">Hotel</option>
+                      <option value="cafe">Cafe</option>
+                      <option value="resort">Resort</option>
+                    </select>
+                  </div>
+                  <div className="flex justify-center p-6">
+                    <button
+                      disabled={isLoadingMutation || isLoadingEdit}
+                      type="submit"
+                      className="submit-button">
+                      {isLoadingMutation || isLoadingEdit
+                        ? "Loading..."
+                        : "Submit"}
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Modal Scroll Bar Hidden */}
+              <style jsx>{`
+                .modal-content-container {
+                  max-height: 80vh;
+                  overflow-y: auto;
+                }
+
+                .modal-content-container::-webkit-scrollbar {
+                  display: none;
+                }
+
+                .modal-content-container {
+                  -ms-overflow-style: none; /* For Internet Explorer 10+ */
+                  scrollbar-width: none; /* For Firefox */
+                }
+
+                .input-field,
+                .input-file {
+                  background-color: #f9fafb;
+                  border-radius: 0.375rem;
+                  padding: 0.75rem;
+                  width: 100%;
+                  border: 1px solid #e5e7eb;
+                  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                  transition: all 0.3s ease;
+                }
+
+                .input-field:focus,
+                .input-file:focus {
+                  border-color: #3b82f6;
+                  outline: none;
+                  box-shadow: 0 0 0 1px #3b82f6;
+                }
+
+                .preview-container {
+                  margin-top: 10px;
+                  display: flex;
+                  justify-content: center;
+                }
+
+                .preview-image {
+                  width: 150px;
+                  height: 150px;
+                  object-fit: cover;
+                  border-radius: 8px;
+                  border: 2px solid #e5e7eb;
+                }
+
+                .submit-button {
+                  background-color: #e88b13;
+                  hover: bg-[#F57C00];
+                  color: white;
+                  font-weight: bold;
+                  padding: 0.75rem 2rem;
+                  border-radius: 9999px;
+                  transition: background-color 0.3s ease;
+                }
+
+                .submit-button:hover {
+                  background-color: #f57c00;
+                }
+              `}</style>
             </Modal>
             <Modal isVisible={showDeletePopup} onClose={handleDeleteModalClose}>
               <h3 className="flex justify-center self-center text-md font-bold">
                 Are you sure want to Delete?
-              </h3>
-              <h3 className="flex justify-center self-center text-md font-bold">
-                This will also delete the judges and participants in this zone.
               </h3>
               <div className="flex justify-center p-6">
                 <button
@@ -255,7 +451,7 @@ const Zones = () => {
                 </button>
                 <button
                   disabled={isLoadingDelete}
-                  onClick={handleDelete}
+                  onClick={handleDeleteModalClose}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl">
                   YES
                 </button>
@@ -307,14 +503,13 @@ const Zones = () => {
           ) : (
             vendorData?.map((zone, index) => (
               <tr
-              className="odd:bg-[#FCD199] even:bg-white border-2 border-opacity-50 border-[#9e9696]"
-
+                className="odd:bg-[#FCD199] even:bg-white border-2 border-opacity-50 border-[#9e9696]"
                 key={index}>
                 <td className="px-4 py-2 border-r border-gray-400">
                   {index + 1}
                 </td>
                 <td
-                 onClick={() => navigate(`/single-vendor`)}
+                  onClick={() => navigate(`/single-vendor`)}
                   style={{ cursor: "pointer" }}
                   className="px-4 py-2 border-r border-gray-400">
                   <u
@@ -342,7 +537,7 @@ const Zones = () => {
                     className={`py-2 px-5 flex space-x-2 items-center ${
                       zone?.status
                         ? " text-[#FF0404] border-[#FF0404]"
-                        : "  border-[#E88B13] text-[#E88B13]"
+                        : "  border-[#15d057] text-[#15d057]"
                     } rounded-full  border `}>
                     {" "}
                     <span>{zone?.status ? "Blocked" : "Unblocked"}</span>

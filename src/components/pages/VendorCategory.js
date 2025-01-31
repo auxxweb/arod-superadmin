@@ -14,6 +14,7 @@ import Pagination from "../Pagination";
 import { PUBLIC_USER_FRONTEND_URL } from "../../common/utils";
 import { toast } from "sonner";
 import { vendorData } from "../../constants/tableData";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 const VendorCategory = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -29,6 +30,17 @@ const VendorCategory = () => {
   //   page: currentPage,
   //   search: searchValue,
   // });
+  const [imagePreview, setImagePreview] = useState(null);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   const [addZone, { isLoading: isLoadingMutation }] = useAddZoneMutation();
   const [copied, setCopied] = useState("");
 
@@ -188,61 +200,102 @@ const VendorCategory = () => {
             </span>
 
             <Modal
-              isVisible={isModalVisible}
-              onClose={handleModalClose}
-              modalHeader={editPopupData ? "Edit Zone" : "Add Zone"}>
-              <form onSubmit={onSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="zoneName"
-                    className="block text-sm font-medium text-gray-700">
-                    Zone Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    required
-                    defaultValue={editPopupData ? editPopupData?.name : null}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="description"
-                    className="block text-sm font-medium text-gray-700">
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    className="mt-1 block w-full h-20 border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    required
-                    defaultValue={
-                      editPopupData ? editPopupData?.description : null
-                    }
-                  />
-                </div>
-                <div className="flex justify-center p-6">
-                  <button
-                    disabled={isLoadingMutation || isLoadingEdit}
-                    type="submit"
-                    className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl">
-                    {isLoadingMutation || isLoadingEdit
-                      ? "loading..."
-                      : "Submit"}
-                  </button>
-                </div>
-              </form>
-            </Modal>
+  isVisible={isModalVisible}
+  onClose={handleModalClose}
+  modalHeader={editPopupData ? "Edit Category" : "Add Category"}
+>
+  <form onSubmit={handleModalClose} className="space-y-6 p-6 bg-white rounded-lg shadow-lg">
+    {/* Close Button */}
+    <button
+      type="button"
+      onClick={handleModalClose}
+      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg"
+    >
+      ×
+    </button>
+
+    {/* Zone Name */}
+    <div className="space-y-2">
+      <label
+        htmlFor="zoneName"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Category Name
+      </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        className="mt-1 block w-full border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+        required
+        defaultValue={editPopupData ? editPopupData?.name : ""}
+      />
+    </div>
+
+    {/* Description */}
+    <div className="space-y-2">
+      <label
+        htmlFor="description"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Description
+      </label>
+      <textarea
+        name="description"
+        id="description"
+        className="mt-1 block w-full h-32 border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+        required
+        defaultValue={editPopupData ? editPopupData?.description : ""}
+      />
+    </div>
+
+    {/* Image Upload */}
+    <div className="space-y-2">
+      <label
+        htmlFor="image"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Upload Image
+      </label>
+      <input
+        type="file"
+        name="image"
+        id="image"
+        accept="image/*"
+        className="mt-1 block w-full border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+        onChange={handleImageChange}
+      />
+      
+      {/* Image Preview */}
+      {imagePreview && (
+        <div className="mt-2">
+          <img
+            src={imagePreview}
+            alt="Preview"
+            className="w-full h-32 object-cover rounded-md"
+          />
+        </div>
+      )}
+    </div>
+
+    {/* Submit Button */}
+    <div className="flex justify-center">
+      <button
+        disabled={isLoadingMutation || isLoadingEdit}
+        type="submit"
+        className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-3 px-6 rounded-3xl shadow-lg"
+      >
+        {isLoadingMutation || isLoadingEdit ? "loading..." : "Submit"}
+      </button>
+    </div>
+  </form>
+</Modal>
+
             <Modal isVisible={showDeletePopup} onClose={handleDeleteModalClose}>
               <h3 className="flex justify-center self-center text-md font-bold">
                 Are you sure want to Delete?
               </h3>
-              <h3 className="flex justify-center self-center text-md font-bold">
-                This will also delete the judges and participants in this zone.
-              </h3>
+
               <div className="flex justify-center p-6">
                 <button
                   onClick={handleDeleteModalClose}
@@ -252,7 +305,7 @@ const VendorCategory = () => {
                 </button>
                 <button
                   disabled={isLoadingDelete}
-                  onClick={handleDelete}
+                  onClick={handleDeleteModalClose}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl">
                   YES
                 </button>
@@ -313,66 +366,59 @@ const VendorCategory = () => {
                   {index + 1}
                 </td>
                 <td
-                  style={{ cursor: "pointer",textDecoration:"none" }}
+                  style={{ cursor: "pointer", textDecoration: "none" }}
                   className="px-4 py-2 border-r border-gray-400">
                   <u
                     style={{ cursor: "pointer" }}
                     onMouseOver={({ target }) => (target.style.color = "blue")}
                     onMouseOut={({ target }) => (target.style.color = "black")}>
-                   <div style={{display:"flex",gap:"1rem"}}>
-                    <img
-                      alt="pics"
-                      src={zone?.image}
-                      className="w-10 h-10 rounded-full mr-2"
-                    />
-                     {zone?.name}{" "}
-                     </div>
+                    <div style={{ display: "flex", gap: "1rem" }}>
+                      <img
+                        alt="pics"
+                        src={zone?.image}
+                        className="w-10 h-10 rounded-full mr-2"
+                      />
+                      {zone?.name}{" "}
+                    </div>
                   </u>
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
                   {zone?.id}
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                <div className="flex -space-x-3">{zone?.description}</div>
+                  <div className="flex -space-x-3">{zone?.description}</div>
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
                   {zone?.count}
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                <span
-                  style={{
-                    border: `solid 2px ${zone?.status ? 'green' : 'red'}`,
-                    backgroundColor: ` ${
+                  <button
+                    className={`py-2 px-5 flex space-x-2 items-center ${
                       zone?.status
-                        ? 'rgba(0, 255, 0, 0.5)'
-                        : 'rgba(255, 0, 0, 0.5)'
-                    }`,
-                  }}
-                  className="inline-block rounded-full p-1 border border-gray-400 text-sm w-[145px] text-center"
-                >
-                  {zone.status ? 'Active' : 'Blocked'}
-                </span>
-              </td>
+                        ? " text-[#FF0404] border-[#FF0404]"
+                        : "  border-[#15d057] text-[#15d057]"
+                    } rounded-full  border `}>
+                    {" "}
+                    <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
+                    <BiSolidDownArrow className="text-black" />
+                  </button>
+                </td>
 
-                <td className="px-4 py-2">
-                  <button style={{color:"black"}} onClick={() => handleEditClick(zone)}> <img
+                <td className="px-4 py-2 border-r border-gray-400">
+                  <button
+                    // disabled={isLoadingBlock}
+                    onClick={() => handleEditClick(zone)}>
+                    <img
                       alt="pics"
                       src="/icons/edit.svg"
-                      className="w-6 h-6 rounded-full mr-2 "
-                      style={{
-                        filter:
-                          "invert(20%) sepia(94%) saturate(7496%) hue-rotate(347deg) brightness(102%) contrast(104%)",
-                      }}
-                    /></button>
+                      className="w-6 h-6 rounded-full mr-2"
+                    />
+                  </button>
                   <button onClick={() => handleDeleteClick(zone?._id)}>
                     <img
                       alt="pics"
                       src="/icons/delete.svg"
                       className="w-6 h-6 rounded-full mr-2 fill-red-500"
-                      style={{
-                        filter:
-                          "invert(20%) sepia(94%) saturate(7496%) hue-rotate(347deg) brightness(102%) contrast(104%)"
-                      }}
                     />
                   </button>
                 </td>
