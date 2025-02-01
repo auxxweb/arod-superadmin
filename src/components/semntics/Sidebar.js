@@ -11,7 +11,9 @@ function Sidebar({ isOpen, setIsOpen }) {
   
     // Function to handle item click and close sidebar
     const handleItemClick = () => {
-      setIsOpen(false);
+      if (window.innerWidth < 1024) {
+        setIsOpen(false);
+      }
     };
 
   return (
