@@ -304,7 +304,7 @@ const Plans = () => {
               onClose={handleModalClose}
               modalHeader={editPopupData ? "Edit Plan" : "Add Plan"}
             >
-              <form onSubmit={onSubmit} className="space-y-4">
+              <form onSubmit={handleModalClose} className="space-y-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -320,7 +320,7 @@ const Plans = () => {
                       className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Plan Name"
                       required
-                      defaultValue={editPopupData?.planName || ""}
+                      defaultValue={editPopupData?.name || ""}
                     />
                   </div>
                   <div>
@@ -385,7 +385,7 @@ const Plans = () => {
                 <div className="flex justify-center p-6">
                   <button
                     disabled={isLoadingMutation || isLoadingEdit}
-                    type="submit"
+                   onClick={handleModalClose}
                     className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl"
                   >
                     {isLoadingMutation || isLoadingEdit ? "loading..." : "Submit"}

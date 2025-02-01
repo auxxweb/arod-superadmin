@@ -297,153 +297,161 @@ const Dishes = () => {
             </span>
 
             <Modal
-      isVisible={isModalVisible}
-      onClose={handleModalClose}
-      modalHeader={editPopupData ? "Edit Dish" : "Add Dish"}
-    >
-      <form onSubmit={onSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="dishName" className="block text-sm font-medium text-gray-700">
-              Dish Name
-            </label>
-            <input
-              type="text"
-              name="dishName"
-              id="dishName"
-              className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Dish Name"
-              required
-              defaultValue={editPopupData?.dishName || ""}
-            />
-          </div>
-          <div>
-            <label htmlFor="dishId" className="block text-sm font-medium text-gray-700">
-              Dish ID
-            </label>
-            <input
-              type="text"
-              name="dishId"
-              id="dishId"
-              className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Dish ID"
-              required
-              defaultValue={editPopupData?.dishId || ""}
-            />
-          </div>
-        </div>
+              isVisible={isModalVisible}
+              onClose={handleModalClose}
+              modalHeader={editPopupData ? "Edit Dish" : "Add Dish"}>
+              <form onSubmit={handleModalClose} className="space-y-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="dishName"
+                      className="block text-sm font-medium text-gray-700">
+                      Dish Name
+                    </label>
+                    <input
+                      type="text"
+                      name="dishName"
+                      id="dishName"
+                      className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      placeholder="Dish Name"
+                      required
+                      defaultValue={editPopupData?.name || ""}
+                    />
+                  </div>
+                </div>
 
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-            Description
-          </label>
-          <textarea
-            name="description"
-            id="description"
-            className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm h-28"
-            placeholder="Description"
-            required
-            defaultValue={editPopupData?.description || ""}
-          ></textarea>
-        </div>
+                <div>
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm h-28"
+                    placeholder="Description"
+                    required
+                    defaultValue={editPopupData?.description || ""}></textarea>
+                </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-              Price
-            </label>
-            <input
-              type="number"
-              name="price"
-              id="price"
-              className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Price"
-              required
-              defaultValue={editPopupData?.price || ""}
-            />
-          </div>
-          <div>
-            <label htmlFor="offerPrice" className="block text-sm font-medium text-gray-700">
-              Offer Price
-            </label>
-            <input
-              type="number"
-              name="offerPrice"
-              id="offerPrice"
-              className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Offer Price"
-              defaultValue={editPopupData?.offerPrice || ""}
-            />
-          </div>
-        </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="price"
+                      className="block text-sm font-medium text-gray-700">
+                      Price
+                    </label>
+                    <input
+                      type="number"
+                      name="price"
+                      id="price"
+                      className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      placeholder="Price"
+                      required
+                      defaultValue={editPopupData?.price || ""}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="offerPrice"
+                      className="block text-sm font-medium text-gray-700">
+                      Offer Price
+                    </label>
+                    <input
+                      type="number"
+                      name="offerPrice"
+                      id="offerPrice"
+                      className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      placeholder="Offer Price"
+                      defaultValue={editPopupData?.offerPrice || ""}
+                    />
+                  </div>
+                </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="type" className="block text-sm font-medium text-gray-700">
-              Type
-            </label>
-            <input
-              type="text"
-              name="type"
-              id="type"
-              className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Type"
-              required
-              defaultValue={editPopupData?.type || ""}
-            />
-          </div>
-          <div>
-            <label htmlFor="count" className="block text-sm font-medium text-gray-700">
-              Count
-            </label>
-            <input
-              type="number"
-              name="count"
-              id="count"
-              className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Count"
-              required
-              defaultValue={editPopupData?.count || ""}
-            />
-          </div>
-        </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="type"
+                      className="block text-sm font-medium text-gray-700">
+                      Type
+                    </label>
+                    <input
+                      type="text"
+                      name="type"
+                      id="type"
+                      className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      placeholder="Type"
+                      required
+                      defaultValue={editPopupData?.type || ""}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="count"
+                      className="block text-sm font-medium text-gray-700">
+                      Count
+                    </label>
+                    <input
+                      type="number"
+                      name="count"
+                      id="count"
+                      className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      placeholder="Count"
+                      required
+                      defaultValue={editPopupData?.rating || ""}
+                    />
+                  </div>
+                </div>
 
-        <div className="flex flex-row items-center">
-          <input
-            type="checkbox"
-            name="arEnabled"
-            id="arEnabled"
-            className="mr-2 border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            defaultChecked={editPopupData?.ar || false}
-          />
-          <label className="block text-m font-medium text-gray-700">AR Enabled</label>
-        </div>
+                <div className="flex flex-row items-center">
+                  <input
+                    type="checkbox"
+                    name="arEnabled"
+                    id="arEnabled"
+                    className="mr-2 border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    defaultChecked={editPopupData?.ar || false}
+                  />
+                  <label className="block text-m font-medium text-gray-700">
+                    AR Enabled
+                  </label>
+                </div>
 
-        <div className="mt-5">
-          <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-            Image
-          </label>
-          <input
-            type="file"
-            name="image"
-            id="image"
-            className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            onChange={handlePreviewImage}
-          />
-          {imageUrl && <img className="mt-2 w-20 h-auto" src={imageUrl} alt="previewImage" />}
-        </div>
+                <div className="mt-5">
+                  <label
+                    htmlFor="image"
+                    className="block text-sm font-medium text-gray-700">
+                    Image
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    onChange={handlePreviewImage}
+                  />
+                  {imageUrl || editPopupData?.image ? (
+                    <img
+                      className="mt-2 w-20 h-auto"
+                      src={imageUrl || editPopupData?.image}
+                      alt="previewImage"
+                    />
+                  ) : null}
+                </div>
 
-        <div className="flex justify-center p-6">
-          <button
-            disabled={isLoadingMutation || isLoadingEdit}
-            type="submit"
-            className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl"
-          >
-            {isLoadingMutation || isLoadingEdit ? "Loading..." : "Submit"}
-          </button>
-        </div>
-      </form>
-    </Modal>
+                <div className="flex justify-center p-6">
+                  <button
+                    disabled={isLoadingMutation || isLoadingEdit}
+                    onClick={handleModalClose}
+                    className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl">
+                    {isLoadingMutation || isLoadingEdit
+                      ? "Loading..."
+                      : "Submit"}
+                  </button>
+                </div>
+              </form>
+            </Modal>
+
             <Modal isVisible={showDeletePopup} onClose={handleDeleteModalClose}>
               <h3 className="flex self-center text-lg font-bold">
                 Are you sure want to Delete?
@@ -527,13 +535,14 @@ const Dishes = () => {
               Price
             </th>
             <th className="px-4 py-4 text-left border-r border-gray-400">
+              Offer Price
+            </th>
+            <th className="px-4 py-4 text-left border-r border-gray-400">
               Type
             </th>
+            <th className="px-4 py-4 text-left border-r border-gray-400">AR</th>
             <th className="px-4 py-4 text-left border-r border-gray-400">
-              AR
-            </th>
-            <th className="px-4 py-4 text-left border-r border-gray-400">
-              Rating
+              Count
             </th>
             <th className="px-4 py-4 text-left">Action</th>
           </tr>
@@ -542,7 +551,7 @@ const Dishes = () => {
           {isLoading ? (
             <>Loading...</>
           ) : (
-                    DishesData?.map((judge, index) => (
+            DishesData?.map((judge, index) => (
               <tr
                 className="odd:bg-[#FCD199] even:bg-white border-[2px] border-opacity-50 border-[#9e9696]"
                 key={index}>
@@ -570,7 +579,6 @@ const Dishes = () => {
                     className="w-14 h-14 rounded-full mr-2 mt-2"
                   />
                 </td>
-               
 
                 <td className="px-4 py-2 border-r border-gray-400">
                   <ul className="list-disc pl-5 space-y-1">
@@ -582,23 +590,37 @@ const Dishes = () => {
                   </ul>
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                ₹{judge?.price}
+                  ₹{judge?.price}
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                 <div style={{backgroundColor:`${judge?.type ==="veg"?"green":"grey"}`,padding:"7px 0px",borderRadius:"9px",display:"flex",justifyContent:"center"}}>{judge?.type}</div> 
+                  ₹{judge?.offerPrice}
                 </td>
-                  <td className="px-4 py-2 border-r border-gray-400">
-                                  <button
-                                    className={`py-2 px-5 flex space-x-2 items-center ${
-                                      judge?.ar
-                                        ? " text-[#FF0404] border-[#FF0404]"
-                                        : "  border-[#15d057] text-[#15d057]"
-                                    } rounded-full  border `}>
-                                    {" "}
-                                    <span>{judge?.ar ? "Disabled" : "Enabled"}</span>
-                                    <BiSolidDownArrow className="text-black" />
-                                  </button>
-                                </td>
+                <td className="px-4 py-2 border-r border-gray-400">
+                  <div
+                    style={{
+                      backgroundColor: `${
+                        judge?.type === "veg" ? "green" : "grey"
+                      }`,
+                      padding: "7px 0px",
+                      borderRadius: "9px",
+                      display: "flex",
+                      justifyContent: "center"
+                    }}>
+                    {judge?.type}
+                  </div>
+                </td>
+                <td className="px-4 py-2 border-r border-gray-400">
+                  <button
+                    className={`py-2 px-5 flex space-x-2 items-center ${
+                      judge?.ar
+                        ? " text-[#FF0404] border-[#FF0404]"
+                        : "  border-[#15d057] text-[#15d057]"
+                    } rounded-full  border `}>
+                    {" "}
+                    <span>{judge?.ar ? "Disabled" : "Enabled"}</span>
+                    <BiSolidDownArrow className="text-black" />
+                  </button>
+                </td>
                 <td className="px-4 py-2 border-r border-gray-400">
                   {judge?.rating}
                 </td>

@@ -202,7 +202,7 @@ const Zones = () => {
               onClose={handleModalClose}
               modalHeader={editPopupData ? "Edit Vendor" : "Add Vendor"}>
               <div className="modal-content-container">
-                <form onSubmit={onSubmit} className="space-y-6">
+                <form  className="space-y-6">
                 <div className="form-group">
                     <label
                       htmlFor="vendorName"
@@ -216,45 +216,26 @@ const Zones = () => {
                       className="input-field"
                       required
                       defaultValue={
-                        editPopupData ? editPopupData?.vendorName : null
+                        editPopupData ? editPopupData?.name : null
                       }
                     />
                   </div>
-                  <div className="form-group">
-                    <label
-                      htmlFor="description"
-                      className="block text-sm font-medium text-gray-700">
-                      Description
-                    </label>
-                    <input
-                      type="text"
-                      name="description"
-                      id="description"
-                      className="input-field h-20"
-                      required
-                      defaultValue={
-                        editPopupData ? editPopupData?.description : null
-                      }
-                    />
-                  </div>
-                 
-                  <div className="form-group">
-                    <label
-                      htmlFor="location"
-                      className="block text-sm font-medium text-gray-700">
-                      Location
-                    </label>
-                    <input
-                      type="text"
-                      name="location"
-                      id="location"
-                      className="input-field"
-                      required
-                      defaultValue={
-                        editPopupData ? editPopupData?.location : null
-                      }
-                    />
-                  </div>
+                 <div className="space-y-2">
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="mt-1 block w-full h-32 border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+                    required
+                    defaultValue={
+                      editPopupData ? editPopupData?.description : ""
+                    }
+                  />
+                </div>
                   <div className="form-group">
                     <label
                       htmlFor="selectedPlan"
@@ -369,7 +350,7 @@ const Zones = () => {
                   <div className="flex justify-center p-6">
                     <button
                       disabled={isLoadingMutation || isLoadingEdit}
-                      type="submit"
+                      onClick={handleModalClose}
                       className="submit-button">
                       {isLoadingMutation || isLoadingEdit
                         ? "Loading..."

@@ -461,6 +461,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -472,6 +473,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -483,6 +485,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "Non-veg",
@@ -494,6 +497,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -505,6 +509,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -516,6 +521,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -527,6 +533,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -538,6 +545,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -549,6 +557,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
@@ -560,6 +569,7 @@ export const DishesData = [
     name: "Desserts",
     Image: "/constants/dishes.png",
     price: 200,
+    offerPrice:150,
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",

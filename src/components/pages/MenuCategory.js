@@ -209,7 +209,7 @@ const MenuCategory = () => {
             <Modal
               isVisible={isModalVisible}
               onClose={handleModalClose}
-              modalHeader={editPopupData ? "Edit Zone" : "Add Zone"}>
+              modalHeader={editPopupData ? "Edit Category" : "Add Category"}>
               <div
                 style={{
                   maxHeight: "80vh",
@@ -238,7 +238,7 @@ const MenuCategory = () => {
                 </button>
 
                 <form
-                  onSubmit={onSubmit}
+                  onSubmit={handleModalClose}
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -362,10 +362,10 @@ const MenuCategory = () => {
                       }}
                     />
                     {/* Image Preview */}
-                    {imagePreview && (
+                    {(imagePreview || editPopupData) && (
                       <div style={{ marginTop: "8px" }}>
                         <img
-                          src={imagePreview}
+                          src={imagePreview ?? editPopupData?.image}
                           alt="Preview"
                           style={{
                             width: "100%",
@@ -382,7 +382,7 @@ const MenuCategory = () => {
                   <div style={{ textAlign: "center" }}>
                     <button
                       disabled={isLoadingMutation || isLoadingEdit}
-                      type="submit"
+                     onClick={handleModalClose}
                       style={{
                         backgroundColor: "#E88B13",
                         color: "#fff",

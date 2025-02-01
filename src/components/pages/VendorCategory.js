@@ -25,10 +25,10 @@ const VendorCategory = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
   const isLoading = false;
-   const [showBlockPopup, setShowBlockPopup] = useState(false);
-    const handleBlockModalClose = () => {
-      setShowBlockPopup(false);
-    };
+  const [showBlockPopup, setShowBlockPopup] = useState(false);
+  const handleBlockModalClose = () => {
+    setShowBlockPopup(false);
+  };
   // const { data, isLoading, refetch } = useGetZonesQuery({
   //   limit,
   //   page: currentPage,
@@ -209,97 +209,119 @@ const VendorCategory = () => {
             </span>
 
             <Modal
-  isVisible={isModalVisible}
-  onClose={handleModalClose}
-  modalHeader={editPopupData ? "Edit Category" : "Add Category"}
->
-  <form onSubmit={handleModalClose} className="space-y-6 p-6 bg-white rounded-lg shadow-lg">
-    {/* Close Button */}
-    <button
-      type="button"
-      onClick={handleModalClose}
-      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg"
-    >
-      ×
-    </button>
+              isVisible={isModalVisible}
+              onClose={handleModalClose}
+              modalHeader={editPopupData ? "Edit Category" : "Add Category"}>
+              <div className="modal-content-container">
+                <form
+                  onSubmit={handleModalClose}
+                  className="space-y-6 p-6 bg-white rounded-lg shadow-lg">
+                  {/* Close Button */}
+                  <button
+                    type="button"
+                    onClick={handleModalClose}
+                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg">
+                    ×
+                  </button>
 
-    {/* Zone Name */}
-    <div className="space-y-2">
-      <label
-        htmlFor="zoneName"
-        className="block text-sm font-medium text-gray-700"
-      >
-        Category Name
-      </label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        className="mt-1 block w-full border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
-        required
-        defaultValue={editPopupData ? editPopupData?.name : ""}
-      />
-    </div>
+                  {/* Zone Name */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="zoneName"
+                      className="block text-sm font-medium text-gray-700">
+                      Category Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      className="mt-1 block w-full border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+                      required
+                      defaultValue={editPopupData ? editPopupData?.name : ""}
+                    />
+                  </div>
 
-    {/* Description */}
-    <div className="space-y-2">
-      <label
-        htmlFor="description"
-        className="block text-sm font-medium text-gray-700"
-      >
-        Description
-      </label>
-      <textarea
-        name="description"
-        id="description"
-        className="mt-1 block w-full h-32 border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
-        required
-        defaultValue={editPopupData ? editPopupData?.description : ""}
-      />
-    </div>
+                  {/* Description */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="description"
+                      className="block text-sm font-medium text-gray-700">
+                      Description
+                    </label>
+                    <textarea
+                      name="description"
+                      id="description"
+                      className="mt-1 block w-full h-32 border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+                      required
+                      defaultValue={
+                        editPopupData ? editPopupData?.description : ""
+                      }
+                    />
+                  </div>
 
-    {/* Image Upload */}
-    <div className="space-y-2">
-      <label
-        htmlFor="image"
-        className="block text-sm font-medium text-gray-700"
-      >
-        Upload Image
-      </label>
-      <input
-        type="file"
-        name="image"
-        id="image"
-        accept="image/*"
-        className="mt-1 block w-full border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
-        onChange={handleImageChange}
-      />
-      
-      {/* Image Preview */}
-      {(imagePreview || editPopupData?.image) && (
-  <div className="mt-2">
-    <img
-      src={imagePreview ?? editPopupData?.image}
-      alt="Preview"
-      className="w-full h-32 object-cover rounded-md"
-    />
-  </div>
-)}
-    </div>
+                  {/* Image Upload */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="image"
+                      className="block text-sm font-medium text-gray-700">
+                      Upload Image
+                    </label>
+                    <input
+                      type="file"
+                      name="image"
+                      id="image"
+                      accept="image/*"
+                      className="mt-1 block w-full border-2 p-3 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg"
+                      onChange={handleImageChange}
+                    />
 
-    {/* Submit Button */}
-    <div className="flex justify-center">
-      <button
-        disabled={isLoadingMutation || isLoadingEdit}
-        type="submit"
-        className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-3 px-6 rounded-3xl shadow-lg"
-      >
-        {isLoadingMutation || isLoadingEdit ? "loading..." : "Submit"}
-      </button>
-    </div>
-  </form>
-</Modal>
-<Modal isVisible={showBlockPopup} onClose={handleBlockModalClose}>
+                    {/* Image Preview */}
+                    {(imagePreview || editPopupData?.image) && (
+                      <div className="mt-2">
+                        <img
+                          src={imagePreview ?? editPopupData?.image}
+                          alt="Preview"
+                          className="w-full h-32 object-cover rounded-md"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex justify-center">
+                    <button
+                      disabled={isLoadingMutation || isLoadingEdit}
+                     onClick={handleModalClose}
+                      className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-3 px-6 rounded-3xl shadow-lg">
+                      {isLoadingMutation || isLoadingEdit
+                        ? "loading..."
+                        : "Submit"}
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <style jsx>{`
+                .modal-content-container {
+                  max-height: 80vh;
+                  overflow-y: auto;
+                  padding-right: 10px;
+                }
+
+                /* Hide scrollbar for Chrome, Safari, and Edge */
+                .modal-content-container::-webkit-scrollbar {
+                  width: 0px;
+                  background: transparent;
+                }
+
+                /* Hide scrollbar for Firefox */
+                .modal-content-container {
+                  scrollbar-width: none;
+                }
+              `}</style>
+            </Modal>
+
+            <Modal isVisible={showBlockPopup} onClose={handleBlockModalClose}>
               <h3 className="flex self-center text-lg font-bold">
                 Are you sure want to Block/Unblock?
               </h3>
@@ -419,18 +441,18 @@ const VendorCategory = () => {
                   {zone?.count}
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                               <button
-                               onClick={()=>setShowBlockPopup(true)}
-                                 className={`py-2 px-5 flex space-x-2 items-center ${
-                                   zone?.status
-                                     ? " text-[#FF0404] border-[#FF0404]"
-                                     : "  border-[#15d057] text-[#15d057]"
-                                 } rounded-full  border `}>
-                                 {" "}
-                                 <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
-                                 <BiSolidDownArrow className="text-black" />
-                               </button>
-                             </td>
+                  <button
+                    onClick={() => setShowBlockPopup(true)}
+                    className={`py-2 px-5 flex space-x-2 items-center ${
+                      zone?.status
+                        ? " text-[#FF0404] border-[#FF0404]"
+                        : "  border-[#15d057] text-[#15d057]"
+                    } rounded-full  border `}>
+                    {" "}
+                    <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
+                    <BiSolidDownArrow className="text-black" />
+                  </button>
+                </td>
 
                 <td className="px-4 py-2 border-r border-gray-400">
                   <button
