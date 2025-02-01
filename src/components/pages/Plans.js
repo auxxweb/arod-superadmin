@@ -284,6 +284,8 @@ const Plans = () => {
     }, 2000);
   };
 
+  
+
   return (
     <>
       <div className="flex rounded-lg p-4">
@@ -300,203 +302,98 @@ const Plans = () => {
             <Modal
               isVisible={isModalVisible}
               onClose={handleModalClose}
-              modalHeader={editPopupData ? "Edit Judge" : "Add Judge"}
+              modalHeader={editPopupData ? "Edit Plan" : "Add Plan"}
             >
               <form onSubmit={onSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   <div>
                     <label
-                      htmlFor="name"
+                      htmlFor="planName"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Full name
+                      Plan Name
                     </label>
                     <input
                       type="text"
-                      name="name"
-                      id="name"
+                      name="planName"
+                      id="planName"
                       className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Full name"
+                      placeholder="Plan Name"
                       required
-                      defaultValue={
-                        editPopupData?.name ? editPopupData?.name : ""
-                      }
+                      defaultValue={editPopupData?.planName || ""}
                     />
                   </div>
                   <div>
                     <label
-                      htmlFor="zone"
+                      htmlFor="validity"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Zone
-                    </label>
-                    <Select
-                      className="border-gray-400"
-                      options={[]}
-                      onChange={handleChange}
-                      value={zonesList}
-                      isMulti={false}
-                      // hideSelectedOptions
-                      closeMenuOnSelect={true} // Keep the dropdown open for multiple selections
-                      placeholder="Select Zones"
-                      components={{ MultiValue: () => null }} // Hide selected options in input
-                    />
-                    {/* <div className="pt-2">
-                      {zonesList.length > 0 && (
-                        <ul className="flex flex-wrap gap-1">
-                          {zonesList.map((zone) => (
-                            <li
-                              key={zone.value}
-                              className="bg-[#E88B13] flex items-center justify-between text-white rounded-full py-0.5 px-2 text-xs font-light"
-                            >
-                              <span>{zone.label}</span>
-                              <button
-                                type="button"
-                                onClick={() => handleRemoveZone(zone)}
-                                className="ml-2"
-                              >
-                                <IoIosClose className="text-lg" />
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div> */}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Email address
+                      Validity
                     </label>
                     <input
-                      type="email"
-                      name="email"
-                      id="email"
+                      type="text"
+                      name="validity"
+                      id="validity"
                       className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Email address"
+                      placeholder="Validity"
                       required
-                      defaultValue={
-                        editPopupData?.email ? editPopupData?.email : ""
-                      }
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Phone number
-                    </label>
-                    <input
-                      type="number"
-                      name="phone"
-                      id="phone"
-                      className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Phone number"
-                      required
-                      defaultValue={
-                        editPopupData?.phone ? editPopupData?.phone : ""
-                      }
+                      defaultValue={editPopupData?.validity || ""}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="address"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Address
-                    </label>
-                    <input
-                      type="text"
-                      name="address"
-                      id="address"
-                      className="mt-1 h-28 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      placeholder="Address"
-                      required
-                      defaultValue={
-                        editPopupData?.address ? editPopupData?.address : ""
-                      }
-                    />
-                  </div>
-                  <div>
-                    <div>
-                      <label
-                        htmlFor="gender"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Gender
-                      </label>
-                      <select
-                        name="gender"
-                        id="gender"
-                        className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        defaultValue={
-                          editPopupData?.gender ? editPopupData?.gender : ""
-                        }
-                      >
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select>
-                    </div>
-                    <div className="mt-5">
-                      <label
-                        htmlFor="image"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Image
-                      </label>
-                      <input
-                        type="file"
-                        name="image"
-                        id="image"
-                        className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        onChange={handlePreviewImage}
-                      />
-                      {imageUrl && (
-                        <img
-                          className="mt-2 w-20 h-auto"
-                          src={imageUrl}
-                          alt="previewImage"
-                        />
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-row">
-                  <input
-                    type="checkbox"
-                    name="isMain"
-                    id="isMain"
-                    className="mr-2 border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    defaultChecked={
-                      editPopupData ? editPopupData?.isMain : false
-                    }
-                  />
-                  <label className="block text-m font-medium text-gray-700">
-                    Main Judge
+                <div>
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Description
                   </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Description"
+                    required
+                    defaultValue={editPopupData?.description || ""}
+                  />
                 </div>
+
+                <div className="mt-5">
+                  <label
+                    htmlFor="image"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Image
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    className="mt-1 block w-full border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    onChange={handlePreviewImage}
+                  />
+                  {imageUrl && (
+                    <img
+                      className="mt-2 w-20 h-auto"
+                      src={imageUrl}
+                      alt="previewImage"
+                    />
+                  )}
+                </div>
+
                 <div className="flex justify-center p-6">
                   <button
                     disabled={isLoadingMutation || isLoadingEdit}
                     type="submit"
                     className="bg-[#E88B13] hover:bg-[#E88B13] text-white font-bold py-2 px-6 rounded-3xl"
                   >
-                    {isLoadingMutation || isLoadingEdit
-                      ? "loading..."
-                      : "Submit"}
+                    {isLoadingMutation || isLoadingEdit ? "loading..." : "Submit"}
                   </button>
                 </div>
               </form>
             </Modal>
+
             <Modal isVisible={showDeletePopup} onClose={handleDeleteModalClose}>
               <h3 className="flex self-center text-lg font-bold">
                 Are you sure want to Delete?
@@ -511,7 +408,7 @@ const Plans = () => {
                 </button>
                 <button
                   disabled={isLoadingDelete}
-                  onClick={handleDelete}
+                  onClick={handleDeleteModalClose}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl"
                 >
                   YES
@@ -522,9 +419,7 @@ const Plans = () => {
               <h3 className="flex self-center text-lg font-bold">
                 Are you sure want to Block/Unblock?
               </h3>
-              <h6 className="flex self-center text-sm text-red-500">
-                Judges cannot be unblocked while the competition is live.
-              </h6>
+            
               <div className="flex justify-center p-6">
                 <button
                   disabled={isLoadingBlock}
@@ -536,7 +431,7 @@ const Plans = () => {
                 </button>
                 <button
                   disabled={isLoadingBlock}
-                  onClick={handleBlockJudge}
+                  onClick={handleBlockModalClose}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl"
                 >
                   {isLoadingBlock ? "loading" : "YES"}
@@ -611,13 +506,11 @@ const Plans = () => {
                 key={index}
               >
                 <td
-                  onClick={() => navigate(`/judges/${judge?._id}`)}
                   className="px-4 py-2 border-r border-gray-400"
                 >
                   {index + 1}
                 </td>
                 <td
-                  onClick={() => navigate(`/judges/${judge?._id}`)}
                   className="px-4 py-2 border-r border-gray-400"
                 >
                   <u
@@ -629,13 +522,11 @@ const Plans = () => {
                   </u>
                 </td>
                 <td
-                  onClick={() => navigate(`/judges/${judge?._id}`)}
                   className="px-4 py-2 border-r border-gray-400"
                 >
                   {judge?.id}
                 </td>
                 <td
-                  onClick={() => navigate(`/judges/${judge?._id}`)}
                   className="px-4 py-2 border-r border-gray-400"
                 >
                   <img

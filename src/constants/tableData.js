@@ -464,7 +464,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,
@@ -474,7 +475,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,
@@ -484,7 +486,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "Non-veg",
-    rating: 5
+    rating: 5,
+    ar:false
   },
   {
     sl: 1,
@@ -494,7 +497,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,
@@ -504,7 +508,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,
@@ -514,7 +519,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,
@@ -524,7 +530,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:false
   },
   {
     sl: 1,
@@ -534,7 +541,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,
@@ -544,7 +552,8 @@ export const DishesData = [
     description:
       "Starters are the perfect way to begin your meal, offering a variety of small, flavorful dishes that awaken the palate. From crispy, savory bites to light, refreshing options, starters set the stage for the main cour,se and add excitement to the dining experience.",
     type: "veg",
-    rating: 5
+    rating: 5,
+    ar:true
   },
   {
     sl: 1,

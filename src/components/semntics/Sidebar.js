@@ -142,7 +142,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                       />
                     </svg>
                   </span>
-                  <span  onClick={() => navigate("/zones")} className="text-custom-16 mt-[-3px] text-[#a5a5a5] hover:text-[#E88B13] ml-4">
+                  <span  onClick={() => navigate("/menu-category")} className="text-custom-16 mt-[-3px] text-[#a5a5a5] hover:text-[#E88B13] ml-4">
                    Menu
                   </span>
                 </div>
