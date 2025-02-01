@@ -8,10 +8,6 @@ function Sidebar({ isOpen, setIsOpen }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-    // Close sidebar on initial load
-    useEffect(() => {
-      setIsOpen(false);
-    }, []);
   
     // Function to handle item click and close sidebar
     const handleItemClick = () => {
