@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useGetDashboardDetailQuery } from "../api/dashboard";
-import participats from "../assets/images/participats.png";
-import judges from "../assets/images/judges.png";
-import zones from "../assets/images/zones.png";
+import participats from "../assets/images/vendor1.png";
+import judges from "../assets/images/menu1.png";
+import zones from "../assets/images/dishes.png";
 const DashBoardSection2 = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   // const { data,refetch} = useGetDashboardDetailQuery();

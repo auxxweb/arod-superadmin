@@ -21,7 +21,7 @@ const BarChart = () => {
       {
         label: "Dishes",
         data: [50, 70, 40, 90, 60], // Constant values
-        backgroundColor: "#058A55",
+        backgroundColor: "#E88B13",
       },
     ],
   };

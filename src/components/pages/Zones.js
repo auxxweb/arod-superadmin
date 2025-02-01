@@ -27,6 +27,10 @@ const Zones = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
   const isLoading = false;
+  const [showBlockPopup, setShowBlockPopup] = useState(false);
+  const handleBlockModalClose = () => {
+    setShowBlockPopup(false);
+  };
 
   const [coverImagePreview, setCoverImagePreview] = useState(null);
   const [logoPreview, setLogoPreview] = useState(null);
@@ -306,10 +310,10 @@ const Zones = () => {
                         )
                       }
                     />
-                    {coverImagePreview && (
+                    {coverImagePreview|| editPopupData && (
                       <div className="preview-container">
                         <img
-                          src={coverImagePreview}
+                          src={coverImagePreview ?? editPopupData?.image}
                           alt="Cover Preview"
                           className="preview-image"
                         />
@@ -457,6 +461,24 @@ const Zones = () => {
                 </button>
               </div>
             </Modal>
+            <Modal isVisible={showBlockPopup} onClose={handleBlockModalClose}>
+              <h3 className="flex self-center text-lg font-bold">
+                Are you sure want to Block/Unblock?
+              </h3>
+              <div className="flex justify-center p-6">
+                <button
+                  onClick={handleBlockModalClose}
+                  type="submit"
+                  className="border border-green-500 text-green-600 hover:bg-green-700 hover:text-white font-bold  py-2 m-2 px-8 rounded-2xl">
+                  No
+                </button>
+                <button
+                  onClick={handleBlockModalClose}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl">
+                  YES
+                </button>
+              </div>
+            </Modal>
           </span>
         </div>
       </div>
@@ -534,6 +556,7 @@ const Zones = () => {
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
                   <button
+                  onClick={()=>setShowBlockPopup(true)}
                     className={`py-2 px-5 flex space-x-2 items-center ${
                       zone?.status
                         ? " text-[#FF0404] border-[#FF0404]"

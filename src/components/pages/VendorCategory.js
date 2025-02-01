@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import copy from "copy-to-clipboard";
 import { useDebouncedCallback } from "use-debounce";
 import { LuCopyCheck } from "react-icons/lu";
@@ -25,6 +25,10 @@ const VendorCategory = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
   const isLoading = false;
+   const [showBlockPopup, setShowBlockPopup] = useState(false);
+    const handleBlockModalClose = () => {
+      setShowBlockPopup(false);
+    };
   // const { data, isLoading, refetch } = useGetZonesQuery({
   //   limit,
   //   page: currentPage,
@@ -34,13 +38,18 @@ const VendorCategory = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      const previewUrl = URL.createObjectURL(file);
+      setImagePreview(previewUrl);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
   const [addZone, { isLoading: isLoadingMutation }] = useAddZoneMutation();
   const [copied, setCopied] = useState("");
 
@@ -267,15 +276,15 @@ const VendorCategory = () => {
       />
       
       {/* Image Preview */}
-      {imagePreview && (
-        <div className="mt-2">
-          <img
-            src={imagePreview}
-            alt="Preview"
-            className="w-full h-32 object-cover rounded-md"
-          />
-        </div>
-      )}
+      {(imagePreview || editPopupData?.image) && (
+  <div className="mt-2">
+    <img
+      src={imagePreview ?? editPopupData?.image}
+      alt="Preview"
+      className="w-full h-32 object-cover rounded-md"
+    />
+  </div>
+)}
     </div>
 
     {/* Submit Button */}
@@ -290,6 +299,24 @@ const VendorCategory = () => {
     </div>
   </form>
 </Modal>
+<Modal isVisible={showBlockPopup} onClose={handleBlockModalClose}>
+              <h3 className="flex self-center text-lg font-bold">
+                Are you sure want to Block/Unblock?
+              </h3>
+              <div className="flex justify-center p-6">
+                <button
+                  onClick={handleBlockModalClose}
+                  type="submit"
+                  className="border border-green-500 text-green-600 hover:bg-green-700 hover:text-white font-bold  py-2 m-2 px-8 rounded-2xl">
+                  No
+                </button>
+                <button
+                  onClick={handleBlockModalClose}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl">
+                  YES
+                </button>
+              </div>
+            </Modal>
 
             <Modal isVisible={showDeletePopup} onClose={handleDeleteModalClose}>
               <h3 className="flex justify-center self-center text-md font-bold">
@@ -392,17 +419,18 @@ const VendorCategory = () => {
                   {zone?.count}
                 </td>
                 <td className="px-4 py-2 border-r border-gray-400">
-                  <button
-                    className={`py-2 px-5 flex space-x-2 items-center ${
-                      zone?.status
-                        ? " text-[#FF0404] border-[#FF0404]"
-                        : "  border-[#15d057] text-[#15d057]"
-                    } rounded-full  border `}>
-                    {" "}
-                    <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
-                    <BiSolidDownArrow className="text-black" />
-                  </button>
-                </td>
+                               <button
+                               onClick={()=>setShowBlockPopup(true)}
+                                 className={`py-2 px-5 flex space-x-2 items-center ${
+                                   zone?.status
+                                     ? " text-[#FF0404] border-[#FF0404]"
+                                     : "  border-[#15d057] text-[#15d057]"
+                                 } rounded-full  border `}>
+                                 {" "}
+                                 <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
+                                 <BiSolidDownArrow className="text-black" />
+                               </button>
+                             </td>
 
                 <td className="px-4 py-2 border-r border-gray-400">
                   <button

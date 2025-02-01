@@ -414,7 +414,7 @@ const Dishes = () => {
             name="arEnabled"
             id="arEnabled"
             className="mr-2 border-2 p-1 border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            defaultChecked={editPopupData?.araEnabled || false}
+            defaultChecked={editPopupData?.ar || false}
           />
           <label className="block text-m font-medium text-gray-700">AR Enabled</label>
         </div>
@@ -467,9 +467,6 @@ const Dishes = () => {
               <h3 className="flex self-center text-lg font-bold">
                 Are you sure want to Block/Unblock?
               </h3>
-              <h6 className="flex self-center text-sm text-red-500">
-                Judges cannot be unblocked while the competition is live.
-              </h6>
               <div className="flex justify-center p-6">
                 <button
                   disabled={isLoadingBlock}
@@ -480,7 +477,7 @@ const Dishes = () => {
                 </button>
                 <button
                   disabled={isLoadingBlock}
-                  onClick={handleBlockJudge}
+                  onClick={handleBlockModalClose}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl">
                   {isLoadingBlock ? "loading" : "YES"}
                 </button>

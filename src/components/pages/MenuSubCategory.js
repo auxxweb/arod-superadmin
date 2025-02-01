@@ -25,6 +25,10 @@ const MenuSubCategory = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 10;
   const isLoading = false;
+    const [showBlockPopup, setShowBlockPopup] = useState(false);
+    const handleBlockModalClose = () => {
+      setShowBlockPopup(false);
+    };
   // const { data, isLoading, refetch } = useGetZonesQuery({
   //   limit,
   //   page: currentPage,
@@ -358,6 +362,24 @@ const handleImageChange = (e) => {
     </form>
   </div>
 </Modal>
+<Modal isVisible={showBlockPopup} onClose={handleBlockModalClose}>
+              <h3 className="flex self-center text-lg font-bold">
+                Are you sure want to Block/Unblock?
+              </h3>
+              <div className="flex justify-center p-6">
+                <button
+                  onClick={handleBlockModalClose}
+                  type="submit"
+                  className="border border-green-500 text-green-600 hover:bg-green-700 hover:text-white font-bold  py-2 m-2 px-8 rounded-2xl">
+                  No
+                </button>
+                <button
+                  onClick={handleBlockModalClose}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 m-2 px-8 rounded-2xl">
+                  YES
+                </button>
+              </div>
+            </Modal>
 
 
             <Modal isVisible={showDeletePopup} onClose={handleDeleteModalClose}>
@@ -453,18 +475,19 @@ const handleImageChange = (e) => {
                 <td className="px-4 py-2 border-r border-gray-400">
                   <div className="flex -space-x-3">{zone?.description}</div>
                 </td>
-                <td className="px-4 py-2 border-r border-gray-400">
-                  <button
-                    className={`py-2 px-5 flex space-x-2 items-center ${
-                      zone?.status
-                        ? " text-[#FF0404] border-[#FF0404]"
-                        : "  border-[#15d057] text-[#15d057]"
-                    } rounded-full  border `}>
-                    {" "}
-                    <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
-                    <BiSolidDownArrow className="text-black" />
-                  </button>
-                </td>
+              <td className="px-4 py-2 border-r border-gray-400">
+                                <button
+                                onClick={()=>setShowBlockPopup(true)}
+                                  className={`py-2 px-5 flex space-x-2 items-center ${
+                                    zone?.status
+                                      ? " text-[#FF0404] border-[#FF0404]"
+                                      : "  border-[#15d057] text-[#15d057]"
+                                  } rounded-full  border `}>
+                                  {" "}
+                                  <span>{zone?.status ? "Blocked" : "Unblocked"}</span>
+                                  <BiSolidDownArrow className="text-black" />
+                                </button>
+                              </td>
 
                 <td className="px-4 py-2 border-r border-gray-400">
                   <button
