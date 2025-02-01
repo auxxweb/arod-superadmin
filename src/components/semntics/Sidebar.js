@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable no-unused-expressions */
+import React, { useEffect } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
@@ -6,6 +7,16 @@ import { ChevronUpIcon } from "@heroicons/react/24/outline";
 function Sidebar({ isOpen, setIsOpen }) {
   const navigate = useNavigate();
   const location = useLocation();
+
+    // Close sidebar on initial load
+    useEffect(() => {
+      setIsOpen(false);
+    }, []);
+  
+    // Function to handle item click and close sidebar
+    const handleItemClick = () => {
+      setIsOpen(false);
+    };
 
   return (
     <Transition
@@ -21,7 +32,7 @@ function Sidebar({ isOpen, setIsOpen }) {
       <div>
         {/* Close button for mobile */}
         <button
-          className="lg:hidden text-white focus:outline-none absolute right-4 top-4"
+          className="lg:hidden text-black focus:outline-none absolute right-4 top-4"
           onClick={() => setIsOpen(false)}>
           <svg
             className="w-6 h-6"
@@ -66,7 +77,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                 }
               />
             </svg>
-            <span className="text-custom-16 hover:text-[#E88B13] ml-4">
+            <span onClick={handleItemClick} className="text-custom-16 hover:text-[#E88B13] ml-4">
               Dashboard
             </span>
           </span>
@@ -74,7 +85,7 @@ function Sidebar({ isOpen, setIsOpen }) {
         <Disclosure>
           {({ open }) => (
             <div >
-              <Disclosure.Button  style={{...(location?.pathname?.split("/")[1] === "/zones"? {backgroundColor:"#CFCFCF", borderRadius:"5px",padding:"8px 0"}:{})}}  className="flex items-center justify-between text-custom-16 text-[#909294] hover:text-[#E88B13] lg:2xl px-4 py-2">
+              <Disclosure.Button   style={{...(location?.pathname?.split("/")[1] === "/zones"? {backgroundColor:"#CFCFCF", borderRadius:"5px",padding:"8px 0"}:{})}}  className="flex items-center justify-between text-custom-16 text-[#909294] hover:text-[#E88B13] lg:2xl px-4 py-2">
                 <div 
                 style={{...(location?.pathname?.split("/")[1] === "/zones"? {backgroundColor:"#CFCFCF", borderRadius:"5px",padding:"8px 0"}:{})}}
                 className=" flex mr-14">
@@ -105,7 +116,7 @@ function Sidebar({ isOpen, setIsOpen }) {
               </Disclosure.Button>
 
               <Disclosure.Panel className="bg-[#ffff] text-custom-16 rounded-md px-4 py-2">
-                <ul className="list-disc list-inside">
+                <ul onClick={handleItemClick} className="list-disc list-inside">
                   <li
                     onClick={() => navigate("/zones")}
                     className="cursor-pointer text-[#E88B13] hover:text-[#E88B13]"
@@ -127,7 +138,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           {({ open }) => (
             <>
               <Disclosure.Button className="flex items-center justify-between text-custom-16 text-[#909294] hover:text-[#E88B13] lg:2xl px-4 py-2">
-                <div className=" flex mr-14">
+                <div  className=" flex mr-14">
                   <span className="ml-[-10px]">
                     <svg
                       width="24"
@@ -154,7 +165,7 @@ function Sidebar({ isOpen, setIsOpen }) {
               </Disclosure.Button>
 
               <Disclosure.Panel className="bg-[#ffff] text-custom-16 rounded-md px-4 py-2">
-                <ul className="list-disc list-inside">
+                <ul onClick={handleItemClick} className="list-disc list-inside">
                   <li
                     onClick={() => navigate("/menu-category")}
                     className="cursor-pointer text-[#E88B13] hover:text-[#E88B13]"
@@ -174,7 +185,7 @@ function Sidebar({ isOpen, setIsOpen }) {
         </Disclosure>
 
         <div
-          onClick={() => navigate("/plans")}
+          onClick={() =>{ navigate("/plans"), handleItemClick()}}
           className={`cursor-pointer flex items-center ${
             location?.pathname?.split("/")[1] === "plans"
               ? "text-[#E88B13]"
@@ -206,7 +217,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           </span>
         </div>
         <div
-          onClick={() => navigate("/dishes")}
+          onClick={() =>{ navigate("/dishes"),handleItemClick()}}
           className={`cursor-pointer flex items-center ${
             location?.pathname?.split("/")[1] === "dishes"
               ? "text-[#E88B13]"
@@ -238,7 +249,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           </span>
         </div>
         <div
-          onClick={() => navigate("/payments")}
+          onClick={() => {navigate("/payments"),handleItemClick()}}
           className={`cursor-pointer flex items-center ${
             location?.pathname?.split("/")[1] === "payments"
               ? "text-[#E88B13]"
@@ -270,7 +281,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           </span>
         </div>
         <div
-          onClick={() => navigate("/terms")}
+          onClick={() => {navigate("/terms"),handleItemClick()}}
           className={`cursor-pointer flex items-center ${
             location?.pathname?.split("/")[1] === "terms"
               ? "text-[#E88B13]"
@@ -302,7 +313,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           </span>
         </div>
         <div
-          onClick={() => navigate("/report")}
+          onClick={() => {navigate("/report"),handleItemClick()}}
           className={`cursor-pointer flex items-center ${
             location?.pathname?.split("/")[1] === "report"
               ? "text-[#E88B13]"
